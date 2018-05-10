@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title> 入门</title>
+		<script src="vue/vue.js"></script>
+		<!--放在head部分避免抖屏-->
+	</head>
+	<body>
+		<!--挂载点，模板，实例的关系-->
+		
+		<div id="root"><!--挂载点，dom节点-->
+			
+			{{msg}}
+			
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({	//创建vue实例,vue注重数据
+				el:'#root',	//element,vue接管id为root的dom节点
+				template:'',	//模板内容
+				data:{
+					msg:'hello world'
+				}
+			})
+		</script>
+	</body>
+</html>

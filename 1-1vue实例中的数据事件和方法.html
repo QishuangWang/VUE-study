@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<h1>{{number}}</h1><!--插值表达式-->
+			
+			<h2 v-text="number"></h2><!--指令-->
+			
+			<div v-text="content"></div>
+			<!--v-text会转义-->
+			<div v-html="content"></div>
+			<!--v-html不会转义-->
+			<div v-on:click="handleClick">{{hello}}</div>
+			<!--
+				点击hello变成world
+				通过改变数据来改变页面
+			-->
+			<div @click="handleClick">{{hello}}</div>
+			<!--简写v-on:click-->
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el:'#root',
+				template:'',
+				data:{
+					number:'123',
+					content:'<h4>hello world</h4>',
+					hello:'hello'
+				},
+				methods:{
+					handleClick:function(){
+						this.hello = 'world'
+					}
+				}
+			})						
+		</script>		
+	</body>
+</html>

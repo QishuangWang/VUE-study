@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if,v-show,v-for</title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div>
+				<input v-model="iptVal"/>
+				<button @click="handleClick">提交</button>
+			</div>
+			<ul>
+				<li v-for="(item,index) of list" :key="index">
+					{{item}}
+				</li>				
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el:'#root',
+				data:{
+					iptVal:'',
+					list:[]
+				},
+				methods:{
+					handleClick:function(){
+						this.list.push(this.iptVal);
+						this.iptVal=''						
+					}
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>

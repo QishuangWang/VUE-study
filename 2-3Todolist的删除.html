@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if,v-show,v-for</title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div>
+				<input v-model="iptVal"/>
+				<button @click="handleSubmit">提交</button>
+			</div>
+		
+			<ul>
+				<todo-item 
+					v-for="(item,index) of list" 
+					:key="index" 
+					:content="item"
+					:index="index"
+					@delete="handleDelete"
+				>
+				</todo-item>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			//注册组件
+			Vue.component('todo-item',{  //第一参数为组件名称
+				props:['content','index'],//必须在组件里面接收外部传递的属性
+				template:'<li>{{content}}<button @click="handleClick">删除</button></li>',
+				methods:{
+					handleClick:function(){
+						this.$emit('delete',this.index)
+					}
+				}
+			})//全局组件方法
+
+			//父组件通过属性形式像子组件传递数据   :content   :index  
+			//子组件通过发布事件，父组件订阅事件,通过发布订阅向父组件传递数据
+			
+			
+			new Vue({
+				el:'#root',
+
+				data:{
+					iptVal:'',
+					list:[]
+				},
+				methods:{
+					handleSubmit:function(){
+						this.list.push(this.iptVal);
+						this.iptVal=''						
+					},
+					handleDelete:function(index){
+						this.list.splice(index,1)
+					}
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>

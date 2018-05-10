@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if,v-show,v-for</title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div v-if="ifel">hello</div>
+			<!--移除dom元素节点-->
+			<div v-show="show">world</div>
+			<!--v-show给dom元素添加display:none;性能相对较好-->
+			<button @click="handleClick1">toggle1</button>
+			<button @click="handleClick2">toggle2</button>
+			
+			<ul>
+				<li v-for="(item,index) of list" :key="index">{{item}}</li>
+			</ul>
+			<!--v-for循环内容的展示 
+				:key=""可以提升性能， 要求每次循环的key值不同
+			-->
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el:'#root',
+				data:{
+					ifel:true,
+					show:true,
+					list:[1,2,3,4]
+				},
+				methods:{
+					handleClick1:function(){
+						this.ifel=!this.ifel
+					},
+					handleClick2:function(){
+						this.show=!this.show
+					}
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>

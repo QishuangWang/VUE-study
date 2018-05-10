@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div v-bind:title="title">{{title}}</div>
+			<!--属性绑定 v-bind:    缩写等于         :   -->
+			<input :value="content" />
+			<div>{{content}}</div>
+			<!--单向绑定-->
+			<input v-model="content" />
+			<div>{{content}}</div>
+			<!--双向绑定v-model指令-->
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el:'#root',
+				data:{
+					title:'this is hello world',
+					content:'this is content'					
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>

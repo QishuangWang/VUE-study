@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if,v-show,v-for</title>
+		<script src="vue/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div>
+				<input v-model="iptVal"/>
+				<button @click="handleClick">提交</button>
+			</div>
+			<!--<ul>
+				<li v-for="(item,index) of list" :key="index">
+					{{item}}
+				</li>				
+			</ul>-->
+			<ul>
+				<todo-item v-for="(item,index) of list" :key="index" :content="item"></todo-item>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			//注册组件
+			Vue.component('todo-item',{  //第一参数为组件名称
+				props:['content'],//必须在组件里面接收外部传递的属性
+				template:'<li>{{content}}</li>'
+			})//全局组件方法
+			
+//			var TodoItem={
+//				template:'<li>item</li>'
+//			}//局部组件,必须在VUE实例里面的compontents里面注册
+			
+			
+			
+			new Vue({
+				el:'#root',
+//				compontents:{
+//					'todo-item':TodoItem //局部组件注册
+//				}
+				data:{
+					iptVal:'',
+					list:[]
+				},
+				methods:{
+					handleClick:function(){
+						this.list.push(this.iptVal);
+						this.iptVal=''						
+					}
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>
